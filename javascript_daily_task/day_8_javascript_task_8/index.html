@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+    <p id="one">Calcutor</p>
+    <p>10</p>
+    <p>5</p>
+    <input type="submit" onclick="add()" value="Addtion"><br><br>
+    <input type="submit" onclick="sub()" value="Substraction"><br><br>
+    <input type="submit" onclick="mult()" value="Multiplication"><br><br>
+    <input type="submit" onclick="div()" value="Divson">
+    </center>
+    <script>
+        var a=10;
+        var b=5;
+        function add()
+        {
+           document.getElementById("one").innerHTML=a+b;
+        }
+        function sub()
+        {
+           document.getElementById("one").innerHTML=a-b;
+        }function mult()
+        {
+           document.getElementById("one").innerHTML=a*b;
+        }
+        function div()
+        {
+           document.getElementById("one").innerHTML=a/b;
+        }
+       
+
+    </script>
+</body>
+</html>
