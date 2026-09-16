@@ -87,10 +87,4 @@ You can improve this project by adding:
 - Scientific calculator functions
 - Responsive mobile design
 
-📄 License
 
-This project is free to use for learning and personal projects.
-
----
-
-⭐ If you are learning web development, try rebuilding this calculator yourself without looking at the original code.
