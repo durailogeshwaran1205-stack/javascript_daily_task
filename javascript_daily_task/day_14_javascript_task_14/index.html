@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calculator</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+
+    <div class="bg-white p-5 rounded-xl shadow-lg w-80">
+
+        <h1 class="text-2xl font-bold text-center mb-4">
+            Calculator
+        </h1>
+
+        <!-- Display -->
+        <input
+            id="display"
+            type="text"
+            readonly
+            class="w-full border p-3 text-right text-2xl mb-4 rounded"
+            value="0"
+        >
+
+        <!-- Buttons -->
+        <div class="grid grid-cols-4 gap-2">
+
+            <button onclick="clearDisplay()" class="bg-red-500 text-white p-3 rounded">
+                C
+            </button>
+
+            <button onclick="deleteNumber()" class="bg-gray-500 text-white p-3 rounded">
+                DEL
+            </button>
+
+            <button onclick="chooseOperator('%')" class="bg-gray-500 text-white p-3 rounded">
+                %
+            </button>
+
+            <button onclick="chooseOperator('/')" class="bg-orange-500 text-white p-3 rounded">
+                ÷
+            </button>
+
+
+            <button onclick="addNumber('7')" class="bg-gray-200 p-3 rounded">
+                7
+            </button>
+
+            <button onclick="addNumber('8')" class="bg-gray-200 p-3 rounded">
+                8
+            </button>
+
+            <button onclick="addNumber('9')" class="bg-gray-200 p-3 rounded">
+                9
+            </button>
+
+            <button onclick="chooseOperator('*')" class="bg-orange-500 text-white p-3 rounded">
+                ×
+            </button>
+
+
+            <button onclick="addNumber('4')" class="bg-gray-200 p-3 rounded">
+                4
+            </button>
+
+            <button onclick="addNumber('5')" class="bg-gray-200 p-3 rounded">
+                5
+            </button>
+
+            <button onclick="addNumber('6')" class="bg-gray-200 p-3 rounded">
+                6
+            </button>
+
+            <button onclick="chooseOperator('-')" class="bg-orange-500 text-white p-3 rounded">
+                −
+            </button>
+
+
+            <button onclick="addNumber('1')" class="bg-gray-200 p-3 rounded">
+                1
+            </button>
+
+            <button onclick="addNumber('2')" class="bg-gray-200 p-3 rounded">
+                2
+            </button>
+
+            <button onclick="addNumber('3')" class="bg-gray-200 p-3 rounded">
+                3
+            </button>
+
+            <button onclick="chooseOperator('+')" class="bg-orange-500 text-white p-3 rounded">
+                +
+            </button>
+
+
+            <button onclick="addNumber('0')" class="bg-gray-200 p-3 rounded col-span-2">
+                0
+            </button>
+
+            <button onclick="addDecimal()" class="bg-gray-200 p-3 rounded">
+                .
+            </button>
+
+            <button onclick="calculate()" class="bg-green-500 text-white p-3 rounded">
+                =
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        let firstNumber = "";
+        let operator = "";
+        let secondNumber = "";
+
+        let display = document.getElementById("display");
+
+
+        // Add number
+        function addNumber(number) {
+
+            if (operator === "") {
+
+                firstNumber += number;
+
+                display.value = firstNumber;
+
+            } else {
+
+                secondNumber += number;
+
+                display.value = secondNumber;
+            }
+        }
+
+
+        // Choose operator
+        function chooseOperator(op) {
+
+            if (firstNumber === "") {
+                return;
+            }
+
+            operator = op;
+        }
+
+
+        // Add decimal
+        function addDecimal() {
+
+            if (operator === "") {
+
+                if (!firstNumber.includes(".")) {
+
+                    firstNumber += ".";
+
+                    display.value = firstNumber;
+                }
+
+            } else {
+
+                if (!secondNumber.includes(".")) {
+
+                    secondNumber += ".";
+
+                    display.value = secondNumber;
+                }
+            }
+        }
+
+
+        // Calculate
+        function calculate() {
+
+            let num1 = Number(firstNumber);
+            let num2 = Number(secondNumber);
+
+            let result;
+
+
+            if (operator === "+") {
+                result = num1 + num2;
+            }
+
+            else if (operator === "-") {
+                result = num1 - num2;
+            }
+
+            else if (operator === "*") {
+                result = num1 * num2;
+            }
+
+            else if (operator === "/") {
+                result = num1 / num2;
+            }
+
+            else if (operator === "%") {
+                result = num1 % num2;
+            }
+
+
+            display.value = result;
+
+            firstNumber = result.toString();
+            operator = "";
+            secondNumber = "";
+        }
+
+
+        // Clear
+        function clearDisplay() {
+
+            firstNumber = "";
+            operator = "";
+            secondNumber = "";
+
+            display.value = "0";
+        }
+
+
+        // Delete
+        function deleteNumber() {
+
+            if (operator === "") {
+
+                firstNumber = firstNumber.slice(0, -1);
+
+                display.value = firstNumber || "0";
+
+            } else {
+
+                secondNumber = secondNumber.slice(0, -1);
+
+                display.value = secondNumber || "0";
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
